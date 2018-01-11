@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://www.sunway.cn/schema/moglia"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.sunway.cn/schema/moglia">
+
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+    <xsd:import namespace="http://www.springframework.org/schema/tool"/>
+
+    <xsd:complexType name="abstractService">
+        <xsd:attribute name="interface" type="xsd:string" use="required"/>
+        <xsd:attribute name="ref" type="xsd:string" use="required" />
+        <xsd:attribute name="port" type="xsd:string" use="required" />
+    </xsd:complexType>
+
+    <xsd:element name="service" type="abstractService"/>
+
+</xsd:schema>
