@@ -5,7 +5,10 @@
   <groupId>cn.sunway</groupId>
   <artifactId>moglia</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <modules>
+    <module>moglia-config</module>
+  </modules>
+  <packaging>pom</packaging>
 
   <name>moglia</name>
   <url>http://maven.apache.org</url>
