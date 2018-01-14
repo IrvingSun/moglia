@@ -1,35 +1,51 @@
 package cn.sunway.api;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by SUNWEI on 2018/1/11.
  */
 public class ServiceBean {
-    private String port; //暴露服务的端口
-    private String interfaceName;//接口名
-    private String serviceImplName;//服务类名
 
+    private String id;
 
-    public String getPort() {
-        return port;
+    private Object ref;
+    private Class<?> interfaceClass;
+
+    private boolean exported;
+
+    public String getId() {
+        return id;
     }
 
-    public void setPort(String port) {
-        this.port = port;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getInterfaceName() {
-        return interfaceName;
+    public Object getRef() {
+        return ref;
     }
 
-    public void setInterfaceName(String interfaceName) {
-        this.interfaceName = interfaceName;
+    public void setRef(Object ref) {
+        this.ref = ref;
     }
 
-    public String getServiceImplName() {
-        return serviceImplName;
+    public Class<?> getInterfaceClass() {
+        return interfaceClass;
     }
 
-    public void setServiceImplName(String serviceImplName) {
-        this.serviceImplName = serviceImplName;
+    public void setInterfaceClass(Class<?> interfaceClass) {
+        this.interfaceClass = interfaceClass;
     }
+
+    @Override
+    public String toString() {
+        return "[Moglia ServiceBean]: {"+
+                "; serviceImpl:"+getRef().toString()
+                +"}";
+
+    }
+
 }

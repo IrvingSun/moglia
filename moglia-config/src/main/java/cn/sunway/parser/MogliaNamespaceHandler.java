@@ -8,6 +8,7 @@ import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 public class MogliaNamespaceHandler extends NamespaceHandlerSupport {
 
     public void init() {
-        registerBeanDefinitionParser("moglia",new ServiceBeanParser());
+        registerBeanDefinitionParser("service",new ServiceBeanParser());
+        registerBeanDefinitionParser("application",new ApplicationBeanParser());
     }
 }
