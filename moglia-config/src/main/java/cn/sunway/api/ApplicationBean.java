@@ -71,11 +71,13 @@ public class ApplicationBean implements InitializingBean,ApplicationListener,App
 
                     System.out.println("[Moglia]服务["+serviceBean+"]已经发布");
                     ServiceBean tmp = (ServiceBean)mogliaApplicationContext.getBean(serviceBean);
-                    exportedService.put("serviceBean@"+tmp.getRef().getClass().getName(),new Invoker(mogliaApplicationContext.getBean(tmp.getId())));
+                    //此处暂时约定一种类型的service只能发布一次
+                    exportedService.put("serviceBean@"+tmp.getRef().getClass().getName(),new Invoker(tmp.getRef()));
             }
             serverBootstrap.group(bossGroup,workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 1024)
+                    .option(ChannelOption.TCP_NODELAY, true)
                     .childHandler(new ChannelInitializer<SocketChannel>(){
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline().addLast(new MogliaHandler(exportedService));
